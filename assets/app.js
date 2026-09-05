@@ -8,8 +8,19 @@
   const caption = document.querySelector('[data-caption]');
   const captionSub = document.querySelector('[data-caption-sub]');
   const captions = slides.map(slide => [slide.dataset.title || '', slide.dataset.subtitle || '']);
-  const slots = ['center', 'right', 'left'];
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 把「离前景第几张」换算成槽位。前后各一张在台上，再往外的收到台侧藏起来。
+  // 这段规则和 build_site.py 里的 hero_slot() 必须保持一致。
+  const slotFor = index => {
+    const count = slides.length;
+    let offset = (index - active + count) % count;
+    if (offset > count / 2) offset -= count;
+    if (offset === 0) return 'center';
+    if (offset === 1) return 'right';
+    if (offset === -1) return 'left';
+    return offset > 0 ? 'far-right' : 'far-left';
+  };
 
   let active = 0;
   let manualPause = reduceMotion;
@@ -36,13 +47,16 @@
   function move(index, announce = false) {
     active = (index + slides.length) % slides.length;
     slides.forEach((slide, slideIndex) => {
-      const relative = (slideIndex - active + slides.length) % slides.length;
-      const isActive = relative === 0;
-      slide.dataset.slot = slots[relative];
+      const slot = slotFor(slideIndex);
+      const isActive = slot === 'center';
+      slide.dataset.slot = slot;
       slide.dataset.active = String(isActive);
       slide.setAttribute('aria-label', isActive
         ? `查看${captions[slideIndex][0]}作品详情`
         : `将${captions[slideIndex][0]}移至前景`);
+      // 台侧那两张退出 Tab 键序列，只留台上三张可聚焦
+      if (slot === 'center' || slot === 'right' || slot === 'left') slide.removeAttribute('tabindex');
+      else if (slide !== document.activeElement) slide.setAttribute('tabindex', '-1');
     });
     dots.forEach((dot, dotIndex) => {
       const isActive = dotIndex === active;

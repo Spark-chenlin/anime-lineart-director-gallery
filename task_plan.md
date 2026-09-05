@@ -69,3 +69,15 @@
 - 移动端 `.work-media-col` 退回静态，导航条落在图片正下方。
 
 验证从 26 项加到 28 项，新增「详情页图片滚动时不位移」和「上下张导航始终完整可见」。
+
+
+## 追加：首页轮播扩到 5 张（台上仍是 3 张）
+
+- `HERO_SLUGS` 五张：m01-gojo、f21-ai-hoshino、c28-mitsuha-taki、f07-bocchi、m02-sung-jinwoo。
+  顺序刻意排成「0 居中 / 1 在右 / 末位在左」，所以首屏首帧和三张时完全一致。
+- 槽位从固定数组改成按「离前景第几张」算：0=center、+1=right、-1=left、再往外 far-right / far-left。
+  `build_site.py::hero_slot()` 和 `assets/app.js::slotFor()` 是同一套规则，改一个必须改另一个。
+- far-* 两张 `opacity:0; pointer-events:none`，并去掉 tabindex，不进 Tab 序列。
+- 点位由 `build_dots()` 生成，不再手写。
+- 窄屏：控制条从 248px 压到 229px，说明文字改成可截断，320–430px 实测都不再被裁切。
+- 首屏传输 0.95MB → 1.02MB（多两张 400w 缩略图），仍在 1.2MB 预算内。

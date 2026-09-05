@@ -28,6 +28,10 @@ SIZES_TALL = "(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px"
 SIZES_WIDE = "(max-width: 800px) 92vw, (max-width: 1304px) 48vw, 610px"
 SIZES_SLIDE = "(max-width: 800px) 64vw, 340px"
 
+# 首页轮播名单。全部参与轮转，但同一时刻只有三张在台上：
+# 第 0 张居中，第 1 张在右，最后一张在左，中间的收到台侧。
+HERO_SLUGS = ["m01-gojo", "f21-ai-hoshino", "c28-mitsuha-taki", "f07-bocchi", "m02-sung-jinwoo"]
+
 LEGACY_KEEP = ["miku", "nino", "itsuki", "yotsuba", "ichika", "marin", "anna"]
 LEGACY_REQUESTS = {
     "miku": "画中野三玖扶住耳机、安静抬眼看向镜头，用深靛蓝乱线做成角色海报，并加入英文角色名和署名。",
@@ -200,25 +204,54 @@ def build_index_nav(samples: list[dict]) -> str:
     return "".join(links)
 
 
+def hero_slot(offset: int, count: int) -> str:
+    """把「离前景第几张」换算成槽位。前后各一张在台上，再往外的收到台侧藏起来。
+    这段规则和 assets/app.js 里的 slotFor() 必须保持一致。"""
+    if offset > count / 2:
+        offset -= count
+    if offset == 0:
+        return "center"
+    if offset == 1:
+        return "right"
+    if offset == -1:
+        return "left"
+    return "far-right" if offset > 0 else "far-left"
+
+
 def build_slides(samples: list[dict], slugs: list[str]) -> str:
-    """首页 hero 轮播：三张精选，第一张作为 LCP 高优先级加载。"""
-    slots = ["center", "right", "left"]
+    """首页 hero 轮播：全部参与轮转，同时只有三张在台上。第一张作为 LCP 高优先级加载。"""
     out = []
     for index, slug in enumerate(slugs):
         item = next(x for x in samples if x["slug"] == slug)
-        active = ' data-active="true"' if index == 0 else ""
-        priority = ' fetchpriority="high"' if index == 0 else ' loading="lazy"'
-        label = (f"查看{item['title']}作品详情" if index == 0 else f"将{item['title']}移至前景")
+        slot = hero_slot(index, len(slugs))
+        onstage = slot in ("center", "right", "left")
+        active = ' data-active="true"' if slot == "center" else ""
+        priority = ' fetchpriority="high"' if slot == "center" else ' loading="lazy"'
+        tab = "" if onstage else ' tabindex="-1"'
+        label = (f"查看{item['title']}作品详情" if slot == "center" else f"将{item['title']}移至前景")
         out.append(
             f'<button class="slide" type="button" data-slide data-art="{esc(slug)}" '
             f'data-title="{esc(item["title"])}" data-subtitle="{esc(item["subtitle"])}" '
-            f'data-slot="{slots[index]}"{active} aria-label="{esc(label)}">'
+            f'data-slot="{slot}"{active}{tab} aria-label="{esc(label)}">'
             f'<img src="{esc(item["variants"][-1][1] if item["variants"] else item["image"])}" '
             f'srcset="{esc(srcset(item))}" sizes="{SIZES_SLIDE}" '
             f'alt="{esc(item["title"])}，{esc(item["subtitle"])}" '
             f'width="{item["width"]}" height="{item["height"]}" decoding="async"{priority}></button>'
         )
     return "\n          ".join(out)
+
+
+def build_dots(samples: list[dict], slugs: list[str]) -> str:
+    out = []
+    for index, slug in enumerate(slugs):
+        item = next(x for x in samples if x["slug"] == slug)
+        first = index == 0
+        out.append(
+            f'<button class="dot" type="button" role="tab" data-dot="{index}"'
+            f'{" data-active=\"true\"" if first else ""} '
+            f'aria-selected="{"true" if first else "false"}" aria-label="{esc(item["title"])}"></button>'
+        )
+    return "".join(out)
 
 
 def replace_block(text: str, name: str, body: str, indent: str = "        ") -> str:
@@ -234,6 +267,7 @@ def update_index(samples: list[dict], hero_slugs: list[str]) -> None:
     text = replace_block(text, "GALLERY", build_gallery(samples))
     text = replace_block(text, "INDEXNAV", build_index_nav(samples), indent="        ")
     text = replace_block(text, "SLIDES", "          " + build_slides(samples, hero_slugs), indent="        ")
+    text = replace_block(text, "DOTS", "              " + build_dots(samples, hero_slugs), indent="            ")
     text = replace_block(text, "GALLERYCOUNT", f"查看全部{cn_number(len(samples))}幅作品", indent="")
     text = replace_block(text, "PRELOAD",
                          f'  <link rel="preload" as="image" fetchpriority="high" '
@@ -368,7 +402,7 @@ def main() -> None:
     works.mkdir(parents=True, exist_ok=True)
     samples = prepare_new() + prepare_legacy()
     build_data(samples)
-    update_index(samples, ["m01-gojo", "f21-ai-hoshino", "m02-sung-jinwoo"])
+    update_index(samples, HERO_SLUGS)
     build_sitemap(samples)
     build_share_images(samples)
     for page in works.glob("*.html"):

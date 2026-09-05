@@ -94,6 +94,10 @@ h1, h2 { text-wrap: balance; }
 .slide[data-slot="left"] { z-index: 1; transform: translate(-116%, -44%) scale(.85) rotate(-3.5deg); opacity: .66; }
 .slide[data-slot="right"] { z-index: 2; transform: translate(16%, -44%) scale(.87) rotate(3.5deg); opacity: .75; }
 .slide[data-slot="left"]:hover, .slide[data-slot="right"]:hover { opacity: .9; }
+/* 台侧待命：继续参与轮转，但看不见也点不到，切换时从这里滑进来 */
+.slide[data-slot="far-left"], .slide[data-slot="far-right"] { z-index: 0; opacity: 0; pointer-events: none; box-shadow: none; }
+.slide[data-slot="far-left"] { transform: translate(-172%, -40%) scale(.7) rotate(-6deg); }
+.slide[data-slot="far-right"] { transform: translate(72%, -40%) scale(.7) rotate(6deg); }
 .hero-mark { position: absolute; color: rgba(39,61,155,.4); font: 10px/1 Georgia, serif; letter-spacing: .14em; pointer-events: none; }
 .hero-mark-a { left: 6%; top: 20%; }
 
@@ -200,15 +204,20 @@ h1, h2 { text-wrap: balance; }
   .slide { width: min(64vw, 246px); }
   .slide[data-slot="left"] { transform: translate(-102%, -43%) scale(.79) rotate(-3deg); opacity: .62; }
   .slide[data-slot="right"] { transform: translate(2%, -43%) scale(.8) rotate(3deg); opacity: .7; }
+  .slide[data-slot="far-left"] { transform: translate(-150%, -40%) scale(.68) rotate(-5deg); }
+  .slide[data-slot="far-right"] { transform: translate(52%, -40%) scale(.68) rotate(5deg); }
   .hero-baseline { min-height: 112px; grid-template-columns: 1fr auto; grid-template-rows: 58px 45px; gap: 0 12px; }
   .hero-baseline::before { top: 29px; }
   .baseline-copy { padding-right: 12px; }
   .baseline-copy strong { font-size: 13px; }
   .baseline-copy span { font-size: 11px; }
-  .controls { justify-self: end; padding: 3px; }
-  .control-button { width: 34px; height: 40px; }
+  /* 窄屏优先保住控制条的触控尺寸，说明文字可以省略号截断 */
+  .baseline-copy { width: auto; min-width: 0; padding-right: 10px; overflow: hidden; }
+  .baseline-copy strong, .baseline-copy span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .controls { justify-self: end; flex: none; padding: 2px; }
+  .control-button { width: 30px; height: 40px; }
   .dots { gap: 0; margin: 0; }
-  .dot { width: 26px; height: 40px; }
+  .dot { width: 25px; height: 40px; }
   .gallery-entry { grid-column: 1 / -1; grid-row: 2; justify-self: start; padding-left: 0; font-size: 12px; }
   .principle-grid { grid-template-columns: 1fr; }
   .principle-grid p { min-height: 0; padding: 20px 0; }

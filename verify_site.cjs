@@ -81,6 +81,45 @@ const check = (name, pass, detail) => { checks.push({ name, pass: Boolean(pass),
   const third = await activeSlug();
   check('轮播三张互不相同', new Set([first, second, third]).size === 3, [first, second, third].join(' → '));
 
+  // 5 张参与轮转，但同一时刻台上只有 center/right/left 三张
+  const stage = await page.evaluate(() => {
+    const onstage = ['center', 'right', 'left'];
+    const slots = [...document.querySelectorAll('[data-slide]')].map(s => s.dataset.slot);
+    const visible = [...document.querySelectorAll('[data-slide]')].filter(s => {
+      const cs = getComputedStyle(s);
+      return +cs.opacity > 0.05 && cs.pointerEvents !== 'none';
+    }).length;
+    return {
+      total: slots.length,
+      dots: document.querySelectorAll('[data-dot]').length,
+      onstage: slots.filter(x => onstage.includes(x)).length,
+      visible,
+      tabbable: [...document.querySelectorAll('[data-slide]')].filter(s => s.tabIndex >= 0).length
+    };
+  });
+  check('轮播共 5 张、点位同步', stage.total === 5 && stage.dots === 5,
+    `${stage.total} 张 / ${stage.dots} 个点`);
+  check('同一时刻只展示 3 张', stage.onstage === 3 && stage.visible === 3,
+    `槽位 ${stage.onstage} / 可见 ${stage.visible}`);
+  check('台侧两张退出 Tab 序列', stage.tabbable === 3, `${stage.tabbable} 张可 Tab`);
+
+  // 连点 5 次必须回到出发的那张（此刻前景是 third），且每一步台上都是 3 张
+  const cycleStart = third;
+  const cycle = [];
+  for (let i = 0; i < 5; i++) {
+    await page.locator('[data-next]').click(); await wait(820);
+    cycle.push(await page.evaluate(() => {
+      const onstage = ['center', 'right', 'left'];
+      const slots = [...document.querySelectorAll('[data-slide]')].map(s => s.dataset.slot);
+      return { active: document.querySelector('[data-slide][data-active="true"]').dataset.art,
+               onstage: slots.filter(x => onstage.includes(x)).length };
+    }));
+  }
+  check('轮播一圈回到起点', cycle[4].active === cycleStart,
+    `${cycleStart} → ${cycle.map(c => c.active).join(' → ')}`);
+  check('轮转过程中始终 3 张在台上', cycle.every(c => c.onstage === 3),
+    cycle.map(c => c.onstage).join(','));
+
   await page.locator('[data-toggle]').click();
   const held = await activeSlug(); await wait(5200);
   check('暂停后不再自动切换', held === await activeSlug());
