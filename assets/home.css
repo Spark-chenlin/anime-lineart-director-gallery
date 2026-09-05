@@ -21,7 +21,7 @@
 .hero-actions a:hover .icon { transform: translateX(2px); }
 .home-page .carousel { width: min(1100px,100%); height: var(--art-height); margin-top: 33px; }
 .home-page .carousel::before, .home-page .carousel::after { display: none; }
-.home-page .slide { width: calc(var(--art-height) * .75); height: var(--art-height); padding: clamp(5px, .65vw, 10px); border-color: #dfe3ed; background: #fff; box-shadow: 0 2px 4px #11194d0a, 0 10px 24px -9px #11194d24; transform-origin: 50% 50%; transition: transform 720ms var(--ease), opacity 720ms var(--ease), box-shadow 280ms ease, translate 280ms ease; }
+.home-page .slide { width: calc(var(--art-height) * .75); height: var(--art-height); padding: clamp(5px, .65vw, 10px); border-color: #dfe3ed; background: #fff; box-shadow: 0 2px 4px #11194d0a, 0 10px 24px -9px #11194d24; transform-origin: 50% 50%; transition: transform 500ms var(--ease), opacity 500ms var(--ease), box-shadow 280ms ease, translate 280ms ease; }
 .home-page .slide[data-slot="center"] { box-shadow: 0 2px 5px #11194d12, 0 15px 32px -10px #11194d30; }
 .home-page .slide[data-slot="left"] { transform: translate(-127%,-49%) scale(.91) rotate(-7deg); opacity: 1; }
 .home-page .slide[data-slot="right"] { transform: translate(27%,-49%) scale(.91) rotate(7deg); opacity: 1; }
