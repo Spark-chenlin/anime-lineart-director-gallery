@@ -344,7 +344,7 @@ def build_work(item: dict, index: int, samples: list[dict]) -> str:
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="preload" href="../assets/fonts/noto-serif-sc-subset.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" fetchpriority="high" href="{esc(image_path)}">
-  <link rel="stylesheet" href="../assets/work.css"></head><body>
+  <link rel="stylesheet" href="../assets/styles.css"><link rel="stylesheet" href="../assets/work.css"></head><body>
   <header class="work-header"><nav class="work-nav shell" aria-label="作品导航"><a class="back-link" href="../index.html#gallery">{ICON_BACK}返回全部作品</a><a class="work-wordmark" href="../index.html">动漫手绘线稿导演</a><a class="repo-link" href="{REPO_URL}" target="_blank" rel="noopener noreferrer">GitHub{ICON_EXTERNAL}</a></nav></header>
   <main class="work-main"><div class="work-layout">
   <div class="work-media-col"><figure class="work-media"><img src="{esc(image_path)}" alt="{esc(item['title'])}，{esc(item['subtitle'])}" width="{item['width']}" height="{item['height']}" fetchpriority="high" decoding="async"></figure>
@@ -355,7 +355,7 @@ def build_work(item: dict, index: int, samples: list[dict]) -> str:
   <section class="work-record" aria-labelledby="record-title"><h2 id="record-title">最初的创作请求</h2><p class="work-request">{esc(item['originalRequest'])}</p><h2>原始提示词</h2><pre class="work-prompt" data-prompt>{esc(prompt_text)}</pre></section>
   <aside class="work-endnote"><p>想知道这张图是怎么被“导演”出来的？</p><a href="../index.html#how">查看使用方法{ICON_FORWARD}</a></aside>
   <p class="kbd-hint">键盘 <kbd>←</kbd> <kbd>→</kbd> 也可以切换作品。</p></article></div></main>
-  <script src="../assets/work.js"></script></body></html>"""
+  <script src="../assets/navigation.js" defer></script><script src="../assets/work.js"></script></body></html>"""
 
 
 FONT_SRC = ROOT / "assets" / "fonts" / "_src" / "NotoSerifSC[wght].ttf"
@@ -406,6 +406,11 @@ def build_font_subset(samples: list[dict]) -> None:
 
 
 def build_sitemap(samples: list[dict]) -> None:
+    # Serve existing clean URLs without a browser round trip; canonical URLs retain .html.
+    (ROOT / "_redirects").write_text(
+        "/ /index.html 200\n" + "\n".join(
+            f"/works/{item['slug']} /works/{item['slug']}.html 200" for item in samples
+        ) + "\n", encoding="utf-8")
     urls = [f"{SITE_ORIGIN}/"] + [absolute(f"works/{item['slug']}.html") for item in samples]
     body = "\n".join(f"  <url><loc>{url}</loc></url>" for url in urls)
     (ROOT / "sitemap.xml").write_text(
