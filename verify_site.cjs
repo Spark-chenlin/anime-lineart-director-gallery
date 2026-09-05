@@ -119,6 +119,14 @@ const check = (name, pass, detail) => { checks.push({ name, pass: Boolean(pass),
     `${cycleStart} → ${cycle.map(c => c.active).join(' → ')}`);
   check('轮转过程中始终 3 张在台上', cycle.every(c => c.onstage === 3),
     cycle.map(c => c.onstage).join(','));
+  const captionSync = await page.evaluate(() => {
+    const active = document.querySelector('[data-slide][data-active="true"]');
+    const all = [...document.querySelectorAll('[data-slide]')];
+    return document.querySelector('[data-caption-request]').textContent === active.dataset.request
+      && document.querySelector('[data-caption-link]').getAttribute('href') === active.getAttribute('href')
+      && +document.querySelector('[data-counter]').textContent === all.indexOf(active) + 1;
+  });
+  check('作品、请求、详情链接与计数同步', captionSync);
 
   await page.locator('[data-toggle]').click();
   const held = await activeSlug(); await wait(5200);
@@ -140,7 +148,7 @@ const check = (name, pass, detail) => { checks.push({ name, pass: Boolean(pass),
 
   // ---- 点击作品：必须导航到详情页，且返回后恢复滚动位置 ----
   await page.goto(base, { waitUntil: 'networkidle' });
-  await page.evaluate(() => window.scrollTo(0, 3000)); await wait(700);
+  await page.locator('a[data-art="f06-yor-forger"]').scrollIntoViewIfNeeded(); await wait(700);
   const scrollBefore = await page.evaluate(() => Math.round(window.scrollY));
   await page.locator('a[data-art="f06-yor-forger"]').click();
   await page.waitForLoadState('load'); await wait(500);
@@ -208,6 +216,21 @@ const check = (name, pass, detail) => { checks.push({ name, pass: Boolean(pass),
     `${report.mobile.tooSmallTargets} 个偏小`);
   await mobile.screenshot({ path: path.join(root, 'screenshots', 'site-home-mobile.png') });
   await mobile.screenshot({ path: path.join(root, 'screenshots', 'site-home-mobile-full.png'), fullPage: true });
+  await mobile.setViewportSize({ width: 320, height: 740 });
+  const narrow = await mobile.evaluate(() => {
+    const nav = document.querySelector('.nav').getBoundingClientRect();
+    const navItems = [...document.querySelectorAll('.nav a')].map(a => a.getBoundingClientRect());
+    const baseline = document.querySelector('.hero-baseline').getBoundingClientRect();
+    const controls = document.querySelector('.controls').getBoundingClientRect();
+    return navItems.every(r => r.left >= nav.left - 1 && r.right <= nav.right + 1 && r.height <= 44)
+      && controls.right <= baseline.right + 1;
+  });
+  check('320px 导航不换行且控制条不越界', narrow);
+  const nojs = await browser.newPage({ javaScriptEnabled: false });
+  await nojs.goto(base);
+  await nojs.locator('[data-slide][data-active="true"]').click();
+  check('禁用 JavaScript 仍可打开首页作品', /works\/m01-gojo\.html$/.test(nojs.url()));
+  await nojs.close();
   await mobile.close();
 
   // ---- 39 个详情页 ----

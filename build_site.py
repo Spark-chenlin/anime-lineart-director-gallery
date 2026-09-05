@@ -26,11 +26,11 @@ THUMB_WIDTHS = (400, 800)
 # 单列卡片和跨两列卡片在各断点下的实际渲染宽度。
 SIZES_TALL = "(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px"
 SIZES_WIDE = "(max-width: 800px) 92vw, (max-width: 1304px) 48vw, 610px"
-SIZES_SLIDE = "(max-width: 800px) 64vw, 340px"
+SIZES_SLIDE = "(max-width: 800px) 59vw, (max-height: 800px) 300px, 390px"
 
 # 首页轮播名单。全部参与轮转，但同一时刻只有三张在台上：
 # 第 0 张居中，第 1 张在右，最后一张在左，中间的收到台侧。
-HERO_SLUGS = ["m01-gojo", "f21-ai-hoshino", "c28-mitsuha-taki", "f07-bocchi", "m02-sung-jinwoo"]
+HERO_SLUGS = ["m01-gojo", "f07-bocchi", "c28-mitsuha-taki", "f21-ai-hoshino", "m02-sung-jinwoo"]
 
 LEGACY_KEEP = ["miku", "nino", "itsuki", "yotsuba", "ichika", "marin", "anna"]
 LEGACY_REQUESTS = {
@@ -226,17 +226,22 @@ def build_slides(samples: list[dict], slugs: list[str]) -> str:
         slot = hero_slot(index, len(slugs))
         onstage = slot in ("center", "right", "left")
         active = ' data-active="true"' if slot == "center" else ""
-        priority = ' fetchpriority="high"' if slot == "center" else ' loading="lazy"'
+        priority = ' fetchpriority="high"' if slot == "center" else ('' if onstage else ' loading="lazy"')
         tab = "" if onstage else ' tabindex="-1"'
         label = (f"查看{item['title']}作品详情" if slot == "center" else f"将{item['title']}移至前景")
+        # Dense hatching needs the 800w asset even on 1x screens; grids retain 400w.
+        hero_item = {**item, 'variants': [(w, p) for w, p in item['variants'] if w >= 800]}
         out.append(
-            f'<button class="slide" type="button" data-slide data-art="{esc(slug)}" '
+            f'<a class="slide" href="works/{esc(slug)}.html" data-slide data-art="{esc(slug)}" '
             f'data-title="{esc(item["title"])}" data-subtitle="{esc(item["subtitle"])}" '
-            f'data-slot="{slot}"{active}{tab} aria-label="{esc(label)}">'
-            f'<img src="{esc(item["variants"][-1][1] if item["variants"] else item["image"])}" '
-            f'srcset="{esc(srcset(item))}" sizes="{SIZES_SLIDE}" '
+            f'data-request="{esc(item["originalRequest"])}" '
+            f'data-slot="{slot}"{active}{tab} aria-label="{esc(label)}"'
+            f'{" aria-hidden=\"true\" inert" if not onstage else ""}>'
+            f'<img src="{esc(item["variants"][-1 if onstage else 0][1] if item["variants"] else item["image"])}" '
+            f'srcset="{esc(srcset(hero_item if onstage else item))}" '
+            f'data-stage-srcset="{esc(srcset(hero_item))}" sizes="{SIZES_SLIDE}" '
             f'alt="{esc(item["title"])}，{esc(item["subtitle"])}" '
-            f'width="{item["width"]}" height="{item["height"]}" decoding="async"{priority}></button>'
+            f'width="{item["width"]}" height="{item["height"]}" decoding="async"{priority}></a>'
         )
     return "\n          ".join(out)
 
@@ -247,9 +252,9 @@ def build_dots(samples: list[dict], slugs: list[str]) -> str:
         item = next(x for x in samples if x["slug"] == slug)
         first = index == 0
         out.append(
-            f'<button class="dot" type="button" role="tab" data-dot="{index}"'
+            f'<button class="dot" type="button" data-dot="{index}"'
             f'{" data-active=\"true\"" if first else ""} '
-            f'aria-selected="{"true" if first else "false"}" aria-label="{esc(item["title"])}"></button>'
+            f'aria-pressed="{"true" if first else "false"}" aria-label="{esc(item["title"])}"></button>'
         )
     return "".join(out)
 
@@ -268,7 +273,14 @@ def update_index(samples: list[dict], hero_slugs: list[str]) -> None:
     text = replace_block(text, "INDEXNAV", build_index_nav(samples), indent="        ")
     text = replace_block(text, "SLIDES", "          " + build_slides(samples, hero_slugs), indent="        ")
     text = replace_block(text, "DOTS", "              " + build_dots(samples, hero_slugs), indent="            ")
-    text = replace_block(text, "GALLERYCOUNT", f"查看全部{cn_number(len(samples))}幅作品", indent="")
+    text = replace_block(text, "GALLERYCOUNT", f"浏览全部作品 · {len(samples)}", indent="")
+    first = next(x for x in samples if x['slug'] == hero_slugs[0])
+    text = replace_block(text, "CAPTION",
+                         f'<a href="works/{esc(first["slug"])}.html" data-caption-link>'
+                         f'<strong data-caption>{esc(first["title"])}</strong>'
+                         f'<span data-caption-sub>{esc(first["subtitle"])}</span></a>'
+                         f'<p data-caption-request>{esc(first["originalRequest"])}</p>')
+    text = replace_block(text, "COUNTER", f'<b data-counter>01</b><span> / {len(hero_slugs):02d}</span>')
     text = replace_block(text, "PRELOAD",
                          f'  <link rel="preload" as="image" fetchpriority="high" '
                          f'href="{esc(next(x for x in samples if x["slug"] == hero_slugs[0])["variants"][-1][1])}">',
@@ -325,7 +337,7 @@ FONT_SUBSET = ROOT / "assets" / "fonts" / "noto-serif-sc-subset.woff2"
 
 # 详情页模板里写死、且用 var(--serif) 排的文案。首页那部分直接从生成后的 HTML 里扫，
 # 不在这里手工维护。漏字只会退化成多下载一个完整字体切片，不会显示不出来。
-FIXED_SERIF_TEXT = "最初的创作请求原始提示词把想象，排成线稿。"
+FIXED_SERIF_TEXT = "最初的创作请求原始提示词一句想象，落笔成画。从人物到笔触，都有章法。"
 
 
 def serif_charset(samples: list[dict]) -> set[str]:
