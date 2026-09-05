@@ -1,0 +1,15 @@
+{
+  "name": "anime-lineart-director-gallery",
+  "compatibility_date": "2026-09-05",
+  "assets": {
+    "directory": "./",
+    "not_found_handling": "none",
+    "html_handling": "none"
+  },
+  "routes": [
+    {
+      "pattern": "lineart.chenlinplay.top",
+      "custom_domain": true
+    }
+  ]
+}
