@@ -9,7 +9,6 @@ screenshots/
 content/
 assets/generated/
 assets/fonts/_src/
-assets/fonts/noto-serif-sc/
 __pycache__/
 *.py
 *.pyc
