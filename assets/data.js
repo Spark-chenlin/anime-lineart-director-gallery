@@ -1,6 +1,6 @@
 window.LINEART_SITE = {
   "repoUrl": "https://github.com/Spark-chenlin/anime-lineart-director",
-  "version": "3.4.2",
+  "version": "1.0.0",
   "author": "尘林 Spark",
   "samples": [
     {
@@ -28,7 +28,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M02",
@@ -55,7 +55,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M03",
@@ -82,7 +82,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M04",
@@ -109,7 +109,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M05",
@@ -136,7 +136,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M10",
@@ -163,7 +163,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M11",
@@ -190,7 +190,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M12",
@@ -217,7 +217,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M13",
@@ -244,7 +244,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M21",
@@ -271,7 +271,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M22",
@@ -298,7 +298,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M25",
@@ -325,7 +325,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "M26",
@@ -352,7 +352,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "F01",
@@ -379,7 +379,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "F04",
@@ -406,7 +406,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "F05",
@@ -433,7 +433,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "F06",
@@ -460,7 +460,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "F07",
@@ -487,7 +487,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "F14",
@@ -514,7 +514,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "F21",
@@ -541,7 +541,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "F24",
@@ -568,7 +568,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "F25",
@@ -595,7 +595,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "F30",
@@ -622,7 +622,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "C01",
@@ -649,7 +649,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "C02",
@@ -676,7 +676,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "C04",
@@ -703,7 +703,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "C05",
@@ -730,7 +730,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "C07",
@@ -757,7 +757,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "C08",
@@ -784,7 +784,7 @@ window.LINEART_SITE = {
       "promptRounds": 2,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "C09",
@@ -811,7 +811,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "C17",
@@ -838,7 +838,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "code": "C28",
@@ -865,7 +865,7 @@ window.LINEART_SITE = {
       "promptRounds": 1,
       "sourceType": "new",
       "model": "OpenAI ImageGen（内置工具）",
-      "skillVersion": "3.4.2"
+      "skillVersion": "1.0.0"
     },
     {
       "slug": "miku",

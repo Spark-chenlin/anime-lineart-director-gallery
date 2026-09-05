@@ -13,7 +13,7 @@ GENERATED_ROOT = ROOT / "assets" / "generated"
 GALLERY_ROOT = ROOT / "assets" / "gallery"
 THUMB_ROOT = ROOT / "assets" / "thumbs"
 CONTENT_ROOT = ROOT / "content"
-VERSION = "3.4.2"
+VERSION = "1.0.0"
 REPO_URL = "https://github.com/Spark-chenlin/anime-lineart-director"
 
 # 站点最终地址。域名定下来后只改这一行再跑一次 build_site.py，
