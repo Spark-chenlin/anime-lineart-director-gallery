@@ -18,7 +18,7 @@ REPO_URL = "https://github.com/Spark-chenlin/anime-lineart-director"
 
 # 站点最终地址。域名定下来后只改这一行再跑一次 build_site.py，
 # 所有 og:image / og:url / canonical / sitemap 都会跟着更新。
-SITE_ORIGIN = "https://spark-chenlin.github.io/anime-lineart-director-gallery"
+SITE_ORIGIN = "https://lineart.chenlinplay.top"
 
 # 网格里每张图的候选宽度。原图（1086w 或 1448w）作为最大档由 srcset 自动补上。
 THUMB_WIDTHS = (400, 800)

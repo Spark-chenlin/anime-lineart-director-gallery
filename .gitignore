@@ -13,3 +13,5 @@ Thumbs.db
 # 从 https://github.com/google/fonts/tree/main/ofl/notoserifsc 下载 NotoSerifSC[wght].ttf 放进来
 assets/fonts/_src/
 _proto/
+.wrangler/
+.cf-pages-dist/
