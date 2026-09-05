@@ -1,0 +1,10 @@
+_archive/
+_empty-site-folder/
+assets/generated/
+screenshots/
+verification.json
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+
