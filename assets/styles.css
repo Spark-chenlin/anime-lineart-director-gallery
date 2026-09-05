@@ -98,8 +98,6 @@ h1, h2 { text-wrap: balance; }
 .slide[data-slot="far-left"], .slide[data-slot="far-right"] { z-index: 0; opacity: 0; pointer-events: none; box-shadow: none; }
 .slide[data-slot="far-left"] { transform: translate(-172%, -40%) scale(.7) rotate(-6deg); }
 .slide[data-slot="far-right"] { transform: translate(72%, -40%) scale(.7) rotate(6deg); }
-.hero-mark { position: absolute; color: rgba(39,61,155,.4); font: 10px/1 Georgia, serif; letter-spacing: .14em; pointer-events: none; }
-.hero-mark-a { left: 6%; top: 20%; }
 
 .hero-baseline { position: relative; z-index: 5; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 65px; margin-top: -1px; }
 .hero-baseline::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--blue); opacity: .78; z-index: -1; }
