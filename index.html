@@ -190,9 +190,20 @@
           <p>不需要记参数表。安装 Skill 后，像委托一位画面导演一样说出你的想法。</p>
         </header>
         <div class="steps">
-          <article><b>01</b><h3>安装 Skill</h3><p>从 GitHub 获取 <code>anime-lineart-director</code>，放进工作环境的 <code>skills</code> 目录（例如 <code>~/.claude/skills/</code>）。</p></article>
+          <article><b>01</b><h3>安装 Skill</h3><p>从 GitHub 下载完整仓库，文件夹命名为 <code>anime-lineart-director</code>，按下方说明放入对应工具的 Skills 目录。</p></article>
           <article><b>02</b><h3>描述人物与事件</h3><p>例如：“画中野三玖扶着耳机，安静地看向镜头，用深靛蓝乱线速写。”</p></article>
           <article><b>03</b><h3>获取提示词或直接出图</h3><p>要提示词就说“给我提示词”；环境支持图像生成时，也可以明确说“直接出图”。</p></article>
+        </div>
+        <div class="install-guide" aria-label="按工具安装">
+          <details>
+            <summary>Codex <span>安装目录与调用示例</span></summary>
+            <div class="install-body"><p>在当前项目根目录创建以下目录，并放入完整 Skill 文件夹：</p><code class="install-path">.agents/skills/anime-lineart-director/</code><p>确认其中有 <code>SKILL.md</code>、<code>references/</code> 和 <code>agents/</code>。在该项目的 Codex 对话中输入：</p><pre>$anime-lineart-director 画五条悟抬手扶住眼罩，用深靛蓝乱线速写，给我提示词。</pre><p>若尚未出现在技能列表中，重新启动 Codex 后再试。自定义安装目录以客户端配置为准。</p><a href="https://developers.openai.com/codex/skills/" target="_blank" rel="noopener noreferrer">Codex 官方 Skills 说明 ↗</a></div>
+          </details>
+          <details>
+            <summary>Claude Code <span>安装目录与调用示例</span></summary>
+            <div class="install-body"><p>仅在当前项目使用，放入项目根目录下：</p><code class="install-path">.claude/skills/anime-lineart-director/</code><p>所有项目都要使用，则放入用户主目录下：</p><code class="install-path">~/.claude/skills/anime-lineart-director/</code><p><code>~</code> 表示用户主目录；Windows 通常为 <code>C:/Users/你的用户名/</code>。保留完整文件夹，在 Claude Code 中输入：</p><pre>/anime-lineart-director 画五条悟抬手扶住眼罩，用深靛蓝乱线速写，给我提示词。</pre><a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener noreferrer">Claude Code 官方 Skills 说明 ↗</a></div>
+          </details>
+          <p class="install-tip">安装后先用一句话试试。需要图片时说“直接出图”；图像生成能力由当前工具提供，安装 Skill 本身不会新增生图工具。</p>
         </div>
         <div class="repo-row">
           <p><strong>anime-lineart-director</strong><span><!-- VERSION_START -->

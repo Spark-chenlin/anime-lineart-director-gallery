@@ -305,6 +305,30 @@ ICON_GRID = ('<svg class="icon" viewBox="0 0 16 16" aria-hidden="true" focusable
              '<path d="M2.5 2.5h4v4h-4zM9.5 2.5h4v4h-4zM2.5 9.5h4v4h-4zM9.5 9.5h4v4h-4z"/></svg>')
 
 
+def build_direction_notes(item: dict) -> str:
+    """Separate editorial reading guide; never rewrite the archived prompt."""
+    legacy = {
+        "miku": "以扶住耳机的手势连接人物视线，深靛蓝排线突出长发，脸部保留呼吸感。",
+        "nino": "捏住领结的手势与直视镜头的目光呼应，蓝紫墨线围绕发饰、发梢与制服组织层次。",
+        "itsuki": "整理丝带的动作将视线引向领口，暖红墨线统一头发与衣褶，保持手指和丝带边界清楚。",
+        "yotsuba": "挥手与前倾姿态形成轻快动势，墨绿排线顺着头发与衣物走向展开。",
+        "ichika": "触碰耳饰的手势呼应微笑，黄橙墨线统一短发与衣物，让脸部表情成为重心。",
+        "marin": "整理耳侧头发的动作形成明确手部任务，玫红排线沿长发展开，保留面部与手指的清晰轮廓。",
+        "anna": "捧住零食的双手构成近景重心，深靛蓝线条集中表现长发密度，与脸部留白形成对照。",
+    }
+    if item['slug'] in legacy:
+        body = f'<p>{esc(legacy[item["slug"]])}</p>'
+    else:
+        line = ('用两组墨线区分人物，在手部接触、视线与身体边界处留出清楚的关系。'
+                if item['section'] == 'relationships' else
+                '排线顺着头发与衣褶组织疏密，让脸部、手势和道具保持可读。')
+        if item['slug'] == 'm02-sung-jinwoo':
+            line = '以细线勾出黑衣轮廓，控制亮线密度，让暗底保留压迫感。'
+        rows = [('构图', item['event']), ('墨色', item['palette']), ('笔触', line)]
+        body = '<dl>' + ''.join(f'<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>' for k, v in rows) + '</dl>'
+    return '<section class="work-notes" aria-labelledby="notes-title"><h2 id="notes-title">创作要点</h2><small>依据创作设定整理</small>' + body + '</section>'
+
+
 def build_work(item: dict, index: int, samples: list[dict]) -> str:
     previous, following = samples[(index - 1) % len(samples)], samples[(index + 1) % len(samples)]
     prompt_text = item.get("prompt", "") + (("\n\n负面约束\n" + item["negative"]) if item.get("negative") else "")
@@ -326,7 +350,9 @@ def build_work(item: dict, index: int, samples: list[dict]) -> str:
   <div class="work-media-col"><figure class="work-media"><img src="{esc(image_path)}" alt="{esc(item['title'])}，{esc(item['subtitle'])}" width="{item['width']}" height="{item['height']}" fetchpriority="high" decoding="async"></figure>
   <nav class="work-stepper" aria-label="切换作品"><a class="step-prev" href="{esc(previous['slug'])}.html" rel="prev">{ICON_BACK}<span><small>PREVIOUS</small><strong>{esc(previous['title'])}</strong></span></a><span class="step-index"><a href="../index.html#gallery" aria-label="回到全部作品">{ICON_GRID}</a>{index + 1:02d} / {len(samples):02d}</span><a class="step-next" href="{esc(following['slug'])}.html" rel="next"><span><small>NEXT</small><strong>{esc(following['title'])}</strong></span>{ICON_FORWARD}</a></nav></div>
   <article class="work-copy"><span class="section-number">SELECTED WORK · {index + 1:02d} / {len(samples):02d}</span><h1>{esc(item['title'])}</h1><p class="work-subtitle">{esc(item['subtitle'])}</p>
-  <section class="work-record" aria-labelledby="record-title"><h2 id="record-title">最初的创作请求</h2><p class="work-request">{esc(item['originalRequest'])}</p><h2>原始提示词</h2><pre class="work-prompt" data-prompt>{esc(prompt_text)}</pre><div class="work-actions"><button class="copy-button" type="button" data-copy>复制提示词</button><button class="share-button" type="button" data-share>分享这张作品</button></div><div class="work-status" data-status role="status" aria-live="polite"></div></section>
+  <div class="work-actions"><button class="copy-button" type="button" data-copy>复制提示词</button><button class="share-button" type="button" data-share>分享这张作品</button></div><div class="work-status" data-status role="status" aria-live="polite"></div>
+  {build_direction_notes(item)}
+  <section class="work-record" aria-labelledby="record-title"><h2 id="record-title">最初的创作请求</h2><p class="work-request">{esc(item['originalRequest'])}</p><h2>原始提示词</h2><pre class="work-prompt" data-prompt>{esc(prompt_text)}</pre></section>
   <aside class="work-endnote"><p>想知道这张图是怎么被“导演”出来的？</p><a href="../index.html#how">查看使用方法{ICON_FORWARD}</a></aside>
   <p class="kbd-hint">键盘 <kbd>←</kbd> <kbd>→</kbd> 也可以切换作品。</p></article></div></main>
   <script src="../assets/work.js"></script></body></html>"""
@@ -337,7 +363,7 @@ FONT_SUBSET = ROOT / "assets" / "fonts" / "noto-serif-sc-subset.woff2"
 
 # 详情页模板里写死、且用 var(--serif) 排的文案。首页那部分直接从生成后的 HTML 里扫，
 # 不在这里手工维护。漏字只会退化成多下载一个完整字体切片，不会显示不出来。
-FIXED_SERIF_TEXT = "最初的创作请求原始提示词一句想象，落笔成画。从人物到笔触，都有章法。"
+FIXED_SERIF_TEXT = "创作要点最初的创作请求原始提示词一句想象，落笔成画。从人物到笔触，都有章法。"
 
 
 def serif_charset(samples: list[dict]) -> set[str]:

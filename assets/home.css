@@ -153,3 +153,17 @@
  .home-page .hero-heading { animation: cover-arrive .6s ease both; }
  @keyframes cover-arrive { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
 }
+.install-guide { margin-top: 28px; }
+.install-guide details { border-bottom: 1px solid rgba(255,255,255,.26); }
+.install-guide summary { display: flex; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 16px; font-weight: 600; list-style: none; }
+.install-guide summary::-webkit-details-marker { display: none; }
+.install-guide summary::after { content: '+'; margin-left: auto; font-size: 22px; font-weight: 400; }
+.install-guide details[open] summary::after { content: '−'; }
+.install-guide summary span { color: #bec5e6; font-size: 12px; font-weight: 400; }
+.install-body { max-width: 800px; padding-bottom: 24px; color: #c9cee6; font-size: 14px; }
+.install-body p { margin: 12px 0; }
+.install-body code { overflow-wrap: anywhere; color: #fff; font-size: 12px; }
+.install-path, .install-body pre { display: block; padding: 14px 16px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.045); white-space: pre-wrap; overflow-wrap: anywhere; }
+.install-body pre { color: #fff; font: 13px/1.8 var(--sans); }
+.install-body a { text-decoration: underline; text-underline-offset: 4px; color: #fff; }
+.install-tip { max-width: 760px; margin: 22px 0 0; color: #bec5e6; font-size: 13px; line-height: 1.8; }

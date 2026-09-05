@@ -1,3 +1,14 @@
+# Detail and installation follow-up — 2026-09-05
+
+- Prior homepage baseline committed and pushed to origin/main: `6709739`.
+- Follow-up changes are local for review: copy/share before the long prompt, separate creation notes on all 39 detail pages, and native expandable Codex / Claude Code installation instructions.
+- User excluded the full-site copy audit. Existing categories, titles, subtitles and archived prompts were preserved. Compared all 39 prompt bodies against the pushed commit: identical.
+- Installation references: https://developers.openai.com/codex/skills/ and https://code.claude.com/docs/en/skills, checked on 2026-09-05.
+- Full build completed; `node verify_site.cjs`: **40 passed, 0 failed**, 1.06 MB first screen. Clipboard comparison normalizes Windows CRLF; narrow-screen check waits for font layout and scrolls the button into view.
+- Inspected screenshots: screenshots/detail-refined.png, screenshots/detail-refined-mobile.png, screenshots/install-refined.png. Clear hierarchy, copy before reading notes, no horizontal overflow at 320px, and installation details retain homepage colors and spacing.
+
+---
+
 # Homepage QA — adopted A cover
 
 final result: passed

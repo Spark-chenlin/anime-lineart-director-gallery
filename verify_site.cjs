@@ -251,6 +251,8 @@ const check = (name, pass, detail) => { checks.push({ name, pass: Boolean(pass),
       canonical: /^https?:\/\//.test(document.querySelector('link[rel="canonical"]')?.href || ''),
       hasPager: document.querySelectorAll('.work-stepper a[rel]').length === 2,
       hasPrompt: Boolean(document.querySelector('[data-prompt]')?.textContent.trim()),
+      hasNotes: Boolean(document.querySelector('.work-notes')?.textContent.trim()),
+      copyBeforePrompt: document.querySelector('[data-copy]').getBoundingClientRect().bottom < document.querySelector('[data-prompt]').getBoundingClientRect().top,
       loadsDataJs: [...document.scripts].some(s => s.src.includes('data.js'))
     }));
     report.works.push({ slug, ...result, errors });
@@ -260,6 +262,12 @@ const check = (name, pass, detail) => { checks.push({ name, pass: Boolean(pass),
   // ---- 详情页：图片必须钉死不动，上下张导航必须始终可见 ----
   const detail = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   await detail.goto(`${base}works/m01-gojo.html`, { waitUntil: 'networkidle' });
+  await detail.context().grantPermissions(['clipboard-read', 'clipboard-write']);
+  await detail.locator('[data-copy]').click();
+  await detail.waitForFunction(() => document.querySelector('[data-copy]').textContent === '已复制');
+  check('复制完整提示词且不混入创作要点', await detail.evaluate(async () =>
+    (await navigator.clipboard.readText()).replace(/\r\n/g, '\n') === document.querySelector('[data-prompt]').textContent.replace(/\r\n/g, '\n')));
+  await detail.screenshot({ path: path.join(root, 'screenshots', 'detail-refined.png') });
   await wait(900);
   const geom = () => detail.evaluate(() => {
     const img = document.querySelector('.work-media img').getBoundingClientRect();
@@ -283,10 +291,31 @@ const check = (name, pass, detail) => { checks.push({ name, pass: Boolean(pass),
   check('39 个详情页无破图无溢出', works.every(w => !w.broken && !w.overflow && w.title));
   check('详情页 og:image 与 canonical 都是绝对 URL', works.every(w => w.absoluteOg && w.canonical));
   check('详情页都有提示词和上下页', works.every(w => w.hasPrompt && w.hasPager));
+  check('39 页创作要点齐全且复制入口位于提示词前', works.every(w => w.hasNotes && w.copyBeforePrompt));
   check('详情页不再加载 data.js', works.every(w => !w.loadsDataJs));
   check('详情页无报错', works.every(w => w.errors.length === 0),
     works.flatMap(w => w.errors).slice(0, 3).join(' | '));
   check('全站无控制台报错与 4xx', report.errors.length === 0, report.errors.slice(0, 3).join(' | '));
+
+  {
+  const narrow = await browser.newPage({ viewport: { width: 320, height: 740 } });
+  await narrow.goto(base + '#how');
+  await narrow.locator('.install-guide summary').first().click();
+  await narrow.locator('.install-guide summary').nth(1).click();
+  check('320px 安装说明展开后无溢出', await narrow.evaluate(() =>
+    document.querySelectorAll('.install-guide details[open]').length === 2 && document.documentElement.scrollWidth <= innerWidth));
+  await narrow.goto(base + 'works/m01-gojo.html', { waitUntil: 'networkidle' });
+  await narrow.evaluate(() => document.fonts.ready);
+  await narrow.locator('[data-copy]').evaluate(el => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
+  await narrow.waitForFunction(() => {
+    const r = document.querySelector('[data-copy]').getBoundingClientRect(); return r.top >= 0 && r.bottom <= innerHeight;
+  });
+  check('320px 详情复制按钮完整可见', await narrow.locator('[data-copy]').evaluate(el => {
+    const r = el.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth && r.top >= 0 && r.bottom <= innerHeight;
+  }));
+  await narrow.screenshot({ path: path.join(root, 'screenshots', 'detail-refined-mobile.png') });
+  await narrow.close();
+  }
 
   report.passed = checks.filter(c => c.pass).length;
   report.failed = checks.filter(c => !c.pass).length;

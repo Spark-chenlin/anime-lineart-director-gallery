@@ -48,6 +48,15 @@
 .share-button { background: #fff; color: var(--blue); }
 .share-button:hover { background: var(--blue-faint); }
 .work-status { min-height: 24px; margin-top: 8px; color: var(--blue); font-size: 12px; }
+.work-notes { margin-top: 20px; padding: 22px 0 0; border-top: 1px solid var(--line); }
+.work-notes h2 { display: inline; margin: 0; font: 600 18px/1.4 var(--serif); }
+.work-notes small { margin-left: 12px; color: var(--muted); font-size: 11px; }
+.work-notes dl { margin: 16px 0 0; }
+.work-notes dl div { display: grid; grid-template-columns: 36px 1fr; gap: 14px; margin: 10px 0; font-size: 13px; line-height: 1.8; }
+.work-notes dt { color: var(--blue); }
+.work-notes dd { margin: 0; color: var(--muted); }
+.work-notes p { color: var(--muted); font-size: 13px; line-height: 1.85; }
+.work-subtitle { margin-bottom: 20px; }
 
 .work-endnote { margin-top: 34px; padding: 22px 24px; background: var(--blue-faint); display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
 .work-endnote p { margin: 0; color: var(--muted); font-size: 13px; }
