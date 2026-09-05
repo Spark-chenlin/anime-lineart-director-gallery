@@ -8,3 +8,8 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
+
+# 字体子集化的源文件（25MB，不入库）
+# 从 https://github.com/google/fonts/tree/main/ofl/notoserifsc 下载 NotoSerifSC[wght].ttf 放进来
+assets/fonts/_src/
+_proto/

@@ -6,16 +6,28 @@
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="把自然语言角色需求整理成结构清楚、疏密有序的日系动漫手写乱线速写提示词。浏览 anime-lineart-director 的真实作品与提示词。">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="动漫手绘线稿导演">
   <meta property="og:title" content="动漫手绘线稿导演">
   <meta property="og:description" content="把想象，排成线稿。浏览真实作品、提示词与使用方法。">
-  <meta property="og:image" content="assets/gallery/m01-gojo.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+  <!-- CANONICAL_START -->
+  <link rel="canonical" href="https://spark-chenlin.github.io/anime-lineart-director-gallery/">
+  <meta property="og:url" content="https://spark-chenlin.github.io/anime-lineart-director-gallery/">
+  <meta property="og:image" content="https://spark-chenlin.github.io/anime-lineart-director-gallery/assets/share/cover.jpg">
+  <meta name="twitter:image" content="https://spark-chenlin.github.io/anime-lineart-director-gallery/assets/share/cover.jpg">
+<!-- CANONICAL_END -->
   <title>动漫手绘线稿导演｜anime-lineart-director</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='white'/%3E%3Cpath d='M10 49 25 13l9 25 9-18 11 29' fill='none' stroke='%23273d9b' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/noto-serif-sc-subset.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- PRELOAD_START -->
+  <link rel="preload" as="image" fetchpriority="high" href="assets/thumbs/m01-gojo-800.webp">
+<!-- PRELOAD_END -->
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#gallery">跳到作品画廊</a>
+  <a class="skip-link" href="#top">跳到主要内容</a>
 
   <header class="site-header">
     <nav class="nav shell" aria-label="主导航">
@@ -27,7 +39,7 @@
         <a href="#gallery">作品</a>
         <a href="#about">Skill</a>
         <a href="#how">如何使用</a>
-        <button type="button" data-repo>GitHub ↗</button>
+        <a class="nav-repo" href="https://github.com/Spark-chenlin/anime-lineart-director" target="_blank" rel="noopener noreferrer">GitHub<svg class="icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3h7v7M13 3 4 12"/></svg></a>
       </div>
     </nav>
   </header>
@@ -41,35 +53,40 @@
           <p class="hero-copy">说出角色、动作与情绪，Skill 帮你把自然语言整理成结构清楚、疏密有序的动漫手绘速写提示词。</p>
         </header>
 
-        <div class="carousel" data-carousel tabindex="0" aria-label="精选作品轮播；使用左右方向键切换">
-          <button class="slide" type="button" data-slide data-art="m01-gojo" data-slot="center" data-active="true" aria-label="查看五条悟作品详情">
-            <img src="assets/gallery/m01-gojo.webp" alt="深靛蓝线稿，五条悟抬手扶住眼罩" width="1086" height="1448">
-          </button>
-          <button class="slide" type="button" data-slide data-art="f21-ai-hoshino" data-slot="right" aria-label="将星野爱移至前景">
-            <img src="assets/gallery/f21-ai-hoshino.webp" alt="紫红色线稿，星野爱做出偶像手势" width="1086" height="1448">
-          </button>
-          <button class="slide" type="button" data-slide data-art="m02-sung-jinwoo" data-slot="left" aria-label="将成振宇移至前景">
-            <img src="assets/gallery/m02-sung-jinwoo.webp" alt="黑底蓝紫反相线稿，成振宇侧身站立" width="1086" height="1448">
-          </button>
+        <div class="carousel" data-carousel role="group" aria-roledescription="轮播" aria-label="精选作品；使用左右方向键切换">
+          <!-- SLIDES_START -->
+          <button class="slide" type="button" data-slide data-art="m01-gojo" data-title="五条悟" data-subtitle="深靛 · 眼罩与手势" data-slot="center" data-active="true" aria-label="查看五条悟作品详情"><img src="assets/thumbs/m01-gojo-800.webp" srcset="assets/thumbs/m01-gojo-400.webp 400w, assets/thumbs/m01-gojo-800.webp 800w, assets/gallery/m01-gojo.webp 1086w" sizes="(max-width: 800px) 64vw, 340px" alt="五条悟，深靛 · 眼罩与手势" width="1086" height="1448" decoding="async" fetchpriority="high"></button>
+          <button class="slide" type="button" data-slide data-art="f21-ai-hoshino" data-title="星野爱" data-subtitle="紫红 · 星瞳平涂" data-slot="right" aria-label="将星野爱移至前景"><img src="assets/thumbs/f21-ai-hoshino-800.webp" srcset="assets/thumbs/f21-ai-hoshino-400.webp 400w, assets/thumbs/f21-ai-hoshino-800.webp 800w, assets/gallery/f21-ai-hoshino.webp 1086w" sizes="(max-width: 800px) 64vw, 340px" alt="星野爱，紫红 · 星瞳平涂" width="1086" height="1448" decoding="async" loading="lazy"></button>
+          <button class="slide" type="button" data-slide data-art="m02-sung-jinwoo" data-title="成振宇" data-subtitle="蓝紫 · 黑底反相" data-slot="left" aria-label="将成振宇移至前景"><img src="assets/thumbs/m02-sung-jinwoo-800.webp" srcset="assets/thumbs/m02-sung-jinwoo-400.webp 400w, assets/thumbs/m02-sung-jinwoo-800.webp 800w, assets/gallery/m02-sung-jinwoo.webp 1086w" sizes="(max-width: 800px) 64vw, 340px" alt="成振宇，蓝紫 · 黑底反相" width="1086" height="1448" decoding="async" loading="lazy"></button>
+        <!-- SLIDES_END -->
           <span class="hero-mark hero-mark-a" aria-hidden="true">01</span>
         </div>
 
-        <div class="hero-baseline" aria-label="轮播说明与控制">
-          <div class="baseline-copy" aria-live="polite">
+        <div class="hero-baseline">
+          <p class="baseline-copy">
             <strong data-caption>五条悟</strong>
             <span data-caption-sub>深靛 · 眼罩与手势</span>
-          </div>
-          <div class="controls">
-            <button class="control-button" type="button" data-prev aria-label="上一张">←</button>
-            <div class="dots" aria-label="选择作品">
-              <button class="dot" type="button" data-dot="0" data-active="true" aria-label="五条悟"></button>
-              <button class="dot" type="button" data-dot="1" aria-label="星野爱"></button>
-              <button class="dot" type="button" data-dot="2" aria-label="成振宇"></button>
+          </p>
+          <div class="controls" role="group" aria-label="轮播控制">
+            <button class="control-button" type="button" data-prev aria-label="上一张">
+              <svg class="icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M12 4 6 10l6 6"/></svg>
+            </button>
+            <div class="dots" role="tablist" aria-label="选择作品">
+              <button class="dot" type="button" role="tab" data-dot="0" data-active="true" aria-selected="true" aria-label="五条悟"></button>
+              <button class="dot" type="button" role="tab" data-dot="1" aria-selected="false" aria-label="星野爱"></button>
+              <button class="dot" type="button" role="tab" data-dot="2" aria-selected="false" aria-label="成振宇"></button>
             </div>
-            <button class="control-button" type="button" data-toggle aria-label="暂停自动轮播">Ⅱ</button>
-            <button class="control-button" type="button" data-next aria-label="下一张">→</button>
+            <button class="control-button" type="button" data-toggle aria-label="暂停自动轮播" aria-pressed="false">
+              <svg class="icon icon-pause" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M7.5 4v12M12.5 4v12"/></svg>
+              <svg class="icon icon-play" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M6 4.2v11.6L16 10z" fill="currentColor" stroke="none"/></svg>
+            </button>
+            <button class="control-button" type="button" data-next aria-label="下一张">
+              <svg class="icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m8 4 6 6-6 6"/></svg>
+            </button>
           </div>
-          <a class="gallery-entry" href="#gallery">查看全部三十九幅作品 <span aria-hidden="true">↘</span></a>
+          <a class="gallery-entry" href="#gallery"><!-- GALLERYCOUNT_START -->
+查看全部三十九幅作品
+<!-- GALLERYCOUNT_END --><svg class="icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 5.5h10v10M15 5.5 5 15.5"/></svg></a>
         </div>
       </div>
     </section>
@@ -93,59 +110,59 @@
         </header>
 
         <nav class="gallery-index" aria-label="画廊章节">
-          <a href="#gallery-characters"><strong>23</strong><span>角色研究</span></a>
-          <a href="#gallery-relationships"><strong>09</strong><span>关系与动作</span></a>
-          <a href="#gallery-archive"><strong>07</strong><span>系列档案</span></a>
+        <!-- INDEXNAV_START -->
+<a href="#gallery-characters"><strong>23</strong><span>角色研究</span></a><a href="#gallery-relationships"><strong>09</strong><span>关系与动作</span></a><a href="#gallery-archive"><strong>07</strong><span>系列档案</span></a>
+        <!-- INDEXNAV_END -->
         </nav>
         <div class="gallery-groups" data-gallery>
           <!-- GALLERY_START -->
 <section class="gallery-chapter" id="gallery-characters" aria-labelledby="gallery-characters-title">
           <header class="gallery-chapter-head"><span>01 / CHARACTER STUDIES</span><h3 id="gallery-characters-title">角色研究</h3><p>23 张 · 单人身份、手势、动作与角色主色</p></header>
-          <div class="gallery-grid"><a class="art-item" href="works/m01-gojo.html" data-art="m01-gojo"><span class="art-image"><img src="assets/gallery/m01-gojo.webp" alt="五条悟，深靛 · 眼罩与手势" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>01</i><b>五条悟</b><em>深靛 · 眼罩与手势</em></span></a>
-<a class="art-item" href="works/m02-sung-jinwoo.html" data-art="m02-sung-jinwoo"><span class="art-image"><img src="assets/gallery/m02-sung-jinwoo.webp" alt="成振宇，蓝紫 · 黑底反相" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>02</i><b>成振宇</b><em>蓝紫 · 黑底反相</em></span></a>
-<a class="art-item" href="works/m03-okarun.html" data-art="m03-okarun"><span class="art-image"><img src="assets/gallery/m03-okarun.webp" alt="厄卡伦，黑红 · 状态双联" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>03</i><b>厄卡伦</b><em>黑红 · 状态双联</em></span></a>
-<a class="art-item" href="works/m04-jinshi.html" data-art="m04-jinshi"><span class="art-image"><img src="assets/gallery/m04-jinshi.webp" alt="壬氏，蓝紫 · 长发与衣褶" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>04</i><b>壬氏</b><em>蓝紫 · 长发与衣褶</em></span></a>
-<a class="art-item" href="works/m05-ichikawa.html" data-art="m05-ichikawa"><span class="art-image"><img src="assets/gallery/m05-ichikawa.webp" alt="市川京太郎，石墨 · 安静阅读" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>05</i><b>市川京太郎</b><em>石墨 · 安静阅读</em></span></a>
-<a class="art-item" href="works/m10-denji.html" data-art="m10-denji"><span class="art-image"><img src="assets/gallery/m10-denji.webp" alt="电次，暖橙 · 高速动作" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>06</i><b>电次</b><em>暖橙 · 高速动作</em></span></a>
-<a class="art-item" href="works/m11-aki-hayakawa.html" data-art="m11-aki-hayakawa"><span class="art-image"><img src="assets/gallery/m11-aki-hayakawa.webp" alt="早川秋，深靛 · 持刀侧影" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>07</i><b>早川秋</b><em>深靛 · 持刀侧影</em></span></a>
-<a class="art-item" href="works/m12-yuta-okkotsu.html" data-art="m12-yuta-okkotsu"><span class="art-image"><img src="assets/gallery/m12-yuta-okkotsu.webp" alt="乙骨忧太，深靛 · 戒指点色" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>08</i><b>乙骨忧太</b><em>深靛 · 戒指点色</em></span></a>
-<a class="art-item" href="works/m13-yuji-itadori.html" data-art="m13-yuji-itadori"><span class="art-image"><img src="assets/gallery/m13-yuji-itadori.webp" alt="虎杖悠仁，暖红 · 出拳冲势" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>09</i><b>虎杖悠仁</b><em>暖红 · 出拳冲势</em></span></a>
-<a class="art-item" href="works/m21-eren-yeager.html" data-art="m21-eren-yeager"><span class="art-image"><img src="assets/gallery/m21-eren-yeager.webp" alt="艾伦·耶格尔，石墨 · 强情绪近景" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>10</i><b>艾伦·耶格尔</b><em>石墨 · 强情绪近景</em></span></a>
-<a class="art-item" href="works/m22-aqua.html" data-art="m22-aqua"><span class="art-image"><img src="assets/gallery/m22-aqua.webp" alt="星野阿库亚，冷蓝 · 星瞳点色" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>11</i><b>星野阿库亚</b><em>冷蓝 · 星瞳点色</em></span></a>
-<a class="art-item" href="works/m25-miyamura.html" data-art="m25-miyamura"><span class="art-image"><img src="assets/gallery/m25-miyamura.webp" alt="宫村伊澄，石墨 · 耳饰与侧身" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>12</i><b>宫村伊澄</b><em>石墨 · 耳饰与侧身</em></span></a>
-<a class="art-item" href="works/m26-wakana.html" data-art="m26-wakana"><span class="art-image"><img src="assets/gallery/m26-wakana.webp" alt="新菜若菜，深靛 · 制作工具" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>13</i><b>新菜若菜</b><em>深靛 · 制作工具</em></span></a>
-<a class="art-item" href="works/f01-maomao.html" data-art="f01-maomao"><span class="art-image"><img src="assets/gallery/f01-maomao.webp" alt="猫猫，墨绿 · 药草手势" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>14</i><b>猫猫</b><em>墨绿 · 药草手势</em></span></a>
-<a class="art-item" href="works/f04-marin.html" data-art="f04-marin"><span class="art-image"><img src="assets/gallery/f04-marin.webp" alt="喜多川海梦 · 新作，玫粉 · 发丝与回眸" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>15</i><b>喜多川海梦 · 新作</b><em>玫粉 · 发丝与回眸</em></span></a>
-<a class="art-item" href="works/f05-anna-yamada.html" data-art="f05-anna-yamada"><span class="art-image"><img src="assets/gallery/f05-anna-yamada.webp" alt="山田杏奈 · 新作，深褐 · 零食与双手" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>16</i><b>山田杏奈 · 新作</b><em>深褐 · 零食与双手</em></span></a>
-<a class="art-item" href="works/f06-yor-forger.html" data-art="f06-yor-forger"><span class="art-image"><img src="assets/gallery/f06-yor-forger.webp" alt="约尔·福杰，黑红 · 金饰点色" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>17</i><b>约尔·福杰</b><em>黑红 · 金饰点色</em></span></a>
-<a class="art-item" href="works/f07-bocchi.html" data-art="f07-bocchi"><span class="art-image"><img src="assets/gallery/f07-bocchi.webp" alt="后藤一里，玫粉 · 吉他与发饰" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>18</i><b>后藤一里</b><em>玫粉 · 吉他与发饰</em></span></a>
-<a class="art-item" href="works/f14-makima.html" data-art="f14-makima"><span class="art-image"><img src="assets/gallery/f14-makima.webp" alt="玛奇玛，暖橙 · 环形瞳" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>19</i><b>玛奇玛</b><em>暖橙 · 环形瞳</em></span></a>
-<a class="art-item" href="works/f21-ai-hoshino.html" data-art="f21-ai-hoshino"><span class="art-image"><img src="assets/gallery/f21-ai-hoshino.webp" alt="星野爱，紫红 · 星瞳平涂" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>20</i><b>星野爱</b><em>紫红 · 星瞳平涂</em></span></a>
-<a class="art-item" href="works/f24-ruby-hoshino.html" data-art="f24-ruby-hoshino"><span class="art-image"><img src="assets/gallery/f24-ruby-hoshino.webp" alt="星野露比，暖金 · 单侧星瞳" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>21</i><b>星野露比</b><em>暖金 · 单侧星瞳</em></span></a>
-<a class="art-item" href="works/f25-alya.html" data-art="f25-alya"><span class="art-image"><img src="assets/gallery/f25-alya.webp" alt="艾莉，冰蓝 · 制服海报" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>22</i><b>艾莉</b><em>冰蓝 · 制服海报</em></span></a>
-<a class="art-item" href="works/f30-kaoruko-waguri.html" data-art="f30-kaoruko-waguri"><span class="art-image"><img src="assets/gallery/f30-kaoruko-waguri.webp" alt="和栗薰子，蓝紫 · 点心与长发" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>23</i><b>和栗薰子</b><em>蓝紫 · 点心与长发</em></span></a></div>
+          <div class="gallery-grid"><a class="art-item" href="works/m01-gojo.html" data-art="m01-gojo"><span class="art-image"><img src="assets/thumbs/m01-gojo-400.webp" srcset="assets/thumbs/m01-gojo-400.webp 400w, assets/thumbs/m01-gojo-800.webp 800w, assets/gallery/m01-gojo.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="五条悟，深靛 · 眼罩与手势" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>01</i><b>五条悟</b><em>深靛 · 眼罩与手势</em></span></a>
+<a class="art-item" href="works/m02-sung-jinwoo.html" data-art="m02-sung-jinwoo"><span class="art-image"><img src="assets/thumbs/m02-sung-jinwoo-400.webp" srcset="assets/thumbs/m02-sung-jinwoo-400.webp 400w, assets/thumbs/m02-sung-jinwoo-800.webp 800w, assets/gallery/m02-sung-jinwoo.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="成振宇，蓝紫 · 黑底反相" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>02</i><b>成振宇</b><em>蓝紫 · 黑底反相</em></span></a>
+<a class="art-item" href="works/m03-okarun.html" data-art="m03-okarun"><span class="art-image"><img src="assets/thumbs/m03-okarun-400.webp" srcset="assets/thumbs/m03-okarun-400.webp 400w, assets/thumbs/m03-okarun-800.webp 800w, assets/gallery/m03-okarun.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="厄卡伦，黑红 · 状态双联" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>03</i><b>厄卡伦</b><em>黑红 · 状态双联</em></span></a>
+<a class="art-item" href="works/m04-jinshi.html" data-art="m04-jinshi"><span class="art-image"><img src="assets/thumbs/m04-jinshi-400.webp" srcset="assets/thumbs/m04-jinshi-400.webp 400w, assets/thumbs/m04-jinshi-800.webp 800w, assets/gallery/m04-jinshi.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="壬氏，蓝紫 · 长发与衣褶" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>04</i><b>壬氏</b><em>蓝紫 · 长发与衣褶</em></span></a>
+<a class="art-item" href="works/m05-ichikawa.html" data-art="m05-ichikawa"><span class="art-image"><img src="assets/thumbs/m05-ichikawa-400.webp" srcset="assets/thumbs/m05-ichikawa-400.webp 400w, assets/thumbs/m05-ichikawa-800.webp 800w, assets/gallery/m05-ichikawa.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="市川京太郎，石墨 · 安静阅读" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>05</i><b>市川京太郎</b><em>石墨 · 安静阅读</em></span></a>
+<a class="art-item" href="works/m10-denji.html" data-art="m10-denji"><span class="art-image"><img src="assets/thumbs/m10-denji-400.webp" srcset="assets/thumbs/m10-denji-400.webp 400w, assets/thumbs/m10-denji-800.webp 800w, assets/gallery/m10-denji.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="电次，暖橙 · 高速动作" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>06</i><b>电次</b><em>暖橙 · 高速动作</em></span></a>
+<a class="art-item" href="works/m11-aki-hayakawa.html" data-art="m11-aki-hayakawa"><span class="art-image"><img src="assets/thumbs/m11-aki-hayakawa-400.webp" srcset="assets/thumbs/m11-aki-hayakawa-400.webp 400w, assets/thumbs/m11-aki-hayakawa-800.webp 800w, assets/gallery/m11-aki-hayakawa.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="早川秋，深靛 · 持刀侧影" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>07</i><b>早川秋</b><em>深靛 · 持刀侧影</em></span></a>
+<a class="art-item" href="works/m12-yuta-okkotsu.html" data-art="m12-yuta-okkotsu"><span class="art-image"><img src="assets/thumbs/m12-yuta-okkotsu-400.webp" srcset="assets/thumbs/m12-yuta-okkotsu-400.webp 400w, assets/thumbs/m12-yuta-okkotsu-800.webp 800w, assets/gallery/m12-yuta-okkotsu.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="乙骨忧太，深靛 · 戒指点色" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>08</i><b>乙骨忧太</b><em>深靛 · 戒指点色</em></span></a>
+<a class="art-item" href="works/m13-yuji-itadori.html" data-art="m13-yuji-itadori"><span class="art-image"><img src="assets/thumbs/m13-yuji-itadori-400.webp" srcset="assets/thumbs/m13-yuji-itadori-400.webp 400w, assets/thumbs/m13-yuji-itadori-800.webp 800w, assets/gallery/m13-yuji-itadori.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="虎杖悠仁，暖红 · 出拳冲势" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>09</i><b>虎杖悠仁</b><em>暖红 · 出拳冲势</em></span></a>
+<a class="art-item" href="works/m21-eren-yeager.html" data-art="m21-eren-yeager"><span class="art-image"><img src="assets/thumbs/m21-eren-yeager-400.webp" srcset="assets/thumbs/m21-eren-yeager-400.webp 400w, assets/thumbs/m21-eren-yeager-800.webp 800w, assets/gallery/m21-eren-yeager.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="艾伦·耶格尔，石墨 · 强情绪近景" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>10</i><b>艾伦·耶格尔</b><em>石墨 · 强情绪近景</em></span></a>
+<a class="art-item" href="works/m22-aqua.html" data-art="m22-aqua"><span class="art-image"><img src="assets/thumbs/m22-aqua-400.webp" srcset="assets/thumbs/m22-aqua-400.webp 400w, assets/thumbs/m22-aqua-800.webp 800w, assets/gallery/m22-aqua.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="星野阿库亚，冷蓝 · 星瞳点色" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>11</i><b>星野阿库亚</b><em>冷蓝 · 星瞳点色</em></span></a>
+<a class="art-item" href="works/m25-miyamura.html" data-art="m25-miyamura"><span class="art-image"><img src="assets/thumbs/m25-miyamura-400.webp" srcset="assets/thumbs/m25-miyamura-400.webp 400w, assets/thumbs/m25-miyamura-800.webp 800w, assets/gallery/m25-miyamura.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="宫村伊澄，石墨 · 耳饰与侧身" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>12</i><b>宫村伊澄</b><em>石墨 · 耳饰与侧身</em></span></a>
+<a class="art-item" href="works/m26-wakana.html" data-art="m26-wakana"><span class="art-image"><img src="assets/thumbs/m26-wakana-400.webp" srcset="assets/thumbs/m26-wakana-400.webp 400w, assets/thumbs/m26-wakana-800.webp 800w, assets/gallery/m26-wakana.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="新菜若菜，深靛 · 制作工具" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>13</i><b>新菜若菜</b><em>深靛 · 制作工具</em></span></a>
+<a class="art-item" href="works/f01-maomao.html" data-art="f01-maomao"><span class="art-image"><img src="assets/thumbs/f01-maomao-400.webp" srcset="assets/thumbs/f01-maomao-400.webp 400w, assets/thumbs/f01-maomao-800.webp 800w, assets/gallery/f01-maomao.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="猫猫，墨绿 · 药草手势" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>14</i><b>猫猫</b><em>墨绿 · 药草手势</em></span></a>
+<a class="art-item" href="works/f04-marin.html" data-art="f04-marin"><span class="art-image"><img src="assets/thumbs/f04-marin-400.webp" srcset="assets/thumbs/f04-marin-400.webp 400w, assets/thumbs/f04-marin-800.webp 800w, assets/gallery/f04-marin.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="喜多川海梦 · 新作，玫粉 · 发丝与回眸" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>15</i><b>喜多川海梦 · 新作</b><em>玫粉 · 发丝与回眸</em></span></a>
+<a class="art-item" href="works/f05-anna-yamada.html" data-art="f05-anna-yamada"><span class="art-image"><img src="assets/thumbs/f05-anna-yamada-400.webp" srcset="assets/thumbs/f05-anna-yamada-400.webp 400w, assets/thumbs/f05-anna-yamada-800.webp 800w, assets/gallery/f05-anna-yamada.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="山田杏奈 · 新作，深褐 · 零食与双手" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>16</i><b>山田杏奈 · 新作</b><em>深褐 · 零食与双手</em></span></a>
+<a class="art-item" href="works/f06-yor-forger.html" data-art="f06-yor-forger"><span class="art-image"><img src="assets/thumbs/f06-yor-forger-400.webp" srcset="assets/thumbs/f06-yor-forger-400.webp 400w, assets/thumbs/f06-yor-forger-800.webp 800w, assets/gallery/f06-yor-forger.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="约尔·福杰，黑红 · 金饰点色" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>17</i><b>约尔·福杰</b><em>黑红 · 金饰点色</em></span></a>
+<a class="art-item" href="works/f07-bocchi.html" data-art="f07-bocchi"><span class="art-image"><img src="assets/thumbs/f07-bocchi-400.webp" srcset="assets/thumbs/f07-bocchi-400.webp 400w, assets/thumbs/f07-bocchi-800.webp 800w, assets/gallery/f07-bocchi.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="后藤一里，玫粉 · 吉他与发饰" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>18</i><b>后藤一里</b><em>玫粉 · 吉他与发饰</em></span></a>
+<a class="art-item" href="works/f14-makima.html" data-art="f14-makima"><span class="art-image"><img src="assets/thumbs/f14-makima-400.webp" srcset="assets/thumbs/f14-makima-400.webp 400w, assets/thumbs/f14-makima-800.webp 800w, assets/gallery/f14-makima.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="玛奇玛，暖橙 · 环形瞳" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>19</i><b>玛奇玛</b><em>暖橙 · 环形瞳</em></span></a>
+<a class="art-item" href="works/f21-ai-hoshino.html" data-art="f21-ai-hoshino"><span class="art-image"><img src="assets/thumbs/f21-ai-hoshino-400.webp" srcset="assets/thumbs/f21-ai-hoshino-400.webp 400w, assets/thumbs/f21-ai-hoshino-800.webp 800w, assets/gallery/f21-ai-hoshino.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="星野爱，紫红 · 星瞳平涂" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>20</i><b>星野爱</b><em>紫红 · 星瞳平涂</em></span></a>
+<a class="art-item" href="works/f24-ruby-hoshino.html" data-art="f24-ruby-hoshino"><span class="art-image"><img src="assets/thumbs/f24-ruby-hoshino-400.webp" srcset="assets/thumbs/f24-ruby-hoshino-400.webp 400w, assets/thumbs/f24-ruby-hoshino-800.webp 800w, assets/gallery/f24-ruby-hoshino.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="星野露比，暖金 · 单侧星瞳" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>21</i><b>星野露比</b><em>暖金 · 单侧星瞳</em></span></a>
+<a class="art-item" href="works/f25-alya.html" data-art="f25-alya"><span class="art-image"><img src="assets/thumbs/f25-alya-400.webp" srcset="assets/thumbs/f25-alya-400.webp 400w, assets/thumbs/f25-alya-800.webp 800w, assets/gallery/f25-alya.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="艾莉，冰蓝 · 制服海报" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>22</i><b>艾莉</b><em>冰蓝 · 制服海报</em></span></a>
+<a class="art-item" href="works/f30-kaoruko-waguri.html" data-art="f30-kaoruko-waguri"><span class="art-image"><img src="assets/thumbs/f30-kaoruko-waguri-400.webp" srcset="assets/thumbs/f30-kaoruko-waguri-400.webp 400w, assets/thumbs/f30-kaoruko-waguri-800.webp 800w, assets/gallery/f30-kaoruko-waguri.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="和栗薰子，蓝紫 · 点心与长发" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>23</i><b>和栗薰子</b><em>蓝紫 · 点心与长发</em></span></a></div>
         </section>
 <section class="gallery-chapter" id="gallery-relationships" aria-labelledby="gallery-relationships-title">
           <header class="gallery-chapter-head"><span>02 / RELATIONSHIPS</span><h3 id="gallery-relationships-title">关系与动作</h3><p>9 张 · 双人线场、接触、距离与承重</p></header>
-          <div class="gallery-grid"><a class="art-item art-wide" href="works/c01-anna-kyotaro.html" data-art="c01-anna-kyotaro"><span class="art-image"><img src="assets/gallery/c01-anna-kyotaro.webp" alt="杏奈 × 京太郎，褐黑双墨 · 递零食" width="1448" height="1086" loading="lazy"></span><span class="art-meta"><i>24</i><b>杏奈 × 京太郎</b><em>褐黑双墨 · 递零食</em></span></a>
-<a class="art-item art-wide" href="works/c02-momo-okarun.html" data-art="c02-momo-okarun"><span class="art-image"><img src="assets/gallery/c02-momo-okarun.webp" alt="桃 × 厄卡伦，红黑双墨 · 共同战斗" width="1448" height="1086" loading="lazy"></span><span class="art-meta"><i>25</i><b>桃 × 厄卡伦</b><em>红黑双墨 · 共同战斗</em></span></a>
-<a class="art-item art-wide" href="works/c04-kaoruko-rintaro.html" data-art="c04-kaoruko-rintaro"><span class="art-image"><img src="assets/gallery/c04-kaoruko-rintaro.webp" alt="薰子 × 凛太郎，紫金双墨 · 递点心" width="1448" height="1086" loading="lazy"></span><span class="art-meta"><i>26</i><b>薰子 × 凛太郎</b><em>紫金双墨 · 递点心</em></span></a>
-<a class="art-item art-wide" href="works/c05-marin-wakana.html" data-art="c05-marin-wakana"><span class="art-image"><img src="assets/gallery/c05-marin-wakana.webp" alt="海梦 × 若菜，玫粉深靛 · 量尺寸" width="1448" height="1086" loading="lazy"></span><span class="art-meta"><i>27</i><b>海梦 × 若菜</b><em>玫粉深靛 · 量尺寸</em></span></a>
-<a class="art-item art-wide" href="works/c07-kaguya-miyuki.html" data-art="c07-kaguya-miyuki"><span class="art-image"><img src="assets/gallery/c07-kaguya-miyuki.webp" alt="辉夜 × 白银，黑金双墨 · 隔桌对峙" width="1448" height="1086" loading="lazy"></span><span class="art-meta"><i>28</i><b>辉夜 × 白银</b><em>黑金双墨 · 隔桌对峙</em></span></a>
-<a class="art-item art-wide" href="works/c08-hori-miyamura.html" data-art="c08-hori-miyamura"><span class="art-image"><img src="assets/gallery/c08-hori-miyamura.webp" alt="堀 × 宫村，暖棕深靛 · 整理耳饰" width="1448" height="1086" loading="lazy"></span><span class="art-meta"><i>29</i><b>堀 × 宫村</b><em>暖棕深靛 · 整理耳饰</em></span></a>
-<a class="art-item" href="works/c09-mai-sakuta.html" data-art="c09-mai-sakuta"><span class="art-image"><img src="assets/gallery/c09-mai-sakuta.webp" alt="麻衣 × 咲太，深靛石墨 · 并肩受风" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>30</i><b>麻衣 × 咲太</b><em>深靛石墨 · 并肩受风</em></span></a>
-<a class="art-item" href="works/c17-emilia-subaru.html" data-art="c17-emilia-subaru"><span class="art-image"><img src="assets/gallery/c17-emilia-subaru.webp" alt="艾米莉亚 × 昴，蓝紫石墨 · 扶肩" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>31</i><b>艾米莉亚 × 昴</b><em>蓝紫石墨 · 扶肩</em></span></a>
-<a class="art-item" href="works/c28-mitsuha-taki.html" data-art="c28-mitsuha-taki"><span class="art-image"><img src="assets/gallery/c28-mitsuha-taki.webp" alt="三叶 × 泷，暖红深靛 · 将触未触" width="1086" height="1448" loading="lazy"></span><span class="art-meta"><i>32</i><b>三叶 × 泷</b><em>暖红深靛 · 将触未触</em></span></a></div>
+          <div class="gallery-grid"><a class="art-item art-wide" href="works/c01-anna-kyotaro.html" data-art="c01-anna-kyotaro"><span class="art-image"><img src="assets/thumbs/c01-anna-kyotaro-400.webp" srcset="assets/thumbs/c01-anna-kyotaro-400.webp 400w, assets/thumbs/c01-anna-kyotaro-800.webp 800w, assets/gallery/c01-anna-kyotaro.webp 1448w" sizes="(max-width: 800px) 92vw, (max-width: 1304px) 48vw, 610px" alt="杏奈 × 京太郎，褐黑双墨 · 递零食" width="1448" height="1086" loading="lazy" decoding="async"></span><span class="art-meta"><i>24</i><b>杏奈 × 京太郎</b><em>褐黑双墨 · 递零食</em></span></a>
+<a class="art-item art-wide" href="works/c02-momo-okarun.html" data-art="c02-momo-okarun"><span class="art-image"><img src="assets/thumbs/c02-momo-okarun-400.webp" srcset="assets/thumbs/c02-momo-okarun-400.webp 400w, assets/thumbs/c02-momo-okarun-800.webp 800w, assets/gallery/c02-momo-okarun.webp 1448w" sizes="(max-width: 800px) 92vw, (max-width: 1304px) 48vw, 610px" alt="桃 × 厄卡伦，红黑双墨 · 共同战斗" width="1448" height="1086" loading="lazy" decoding="async"></span><span class="art-meta"><i>25</i><b>桃 × 厄卡伦</b><em>红黑双墨 · 共同战斗</em></span></a>
+<a class="art-item art-wide" href="works/c04-kaoruko-rintaro.html" data-art="c04-kaoruko-rintaro"><span class="art-image"><img src="assets/thumbs/c04-kaoruko-rintaro-400.webp" srcset="assets/thumbs/c04-kaoruko-rintaro-400.webp 400w, assets/thumbs/c04-kaoruko-rintaro-800.webp 800w, assets/gallery/c04-kaoruko-rintaro.webp 1448w" sizes="(max-width: 800px) 92vw, (max-width: 1304px) 48vw, 610px" alt="薰子 × 凛太郎，紫金双墨 · 递点心" width="1448" height="1086" loading="lazy" decoding="async"></span><span class="art-meta"><i>26</i><b>薰子 × 凛太郎</b><em>紫金双墨 · 递点心</em></span></a>
+<a class="art-item art-wide" href="works/c05-marin-wakana.html" data-art="c05-marin-wakana"><span class="art-image"><img src="assets/thumbs/c05-marin-wakana-400.webp" srcset="assets/thumbs/c05-marin-wakana-400.webp 400w, assets/thumbs/c05-marin-wakana-800.webp 800w, assets/gallery/c05-marin-wakana.webp 1448w" sizes="(max-width: 800px) 92vw, (max-width: 1304px) 48vw, 610px" alt="海梦 × 若菜，玫粉深靛 · 量尺寸" width="1448" height="1086" loading="lazy" decoding="async"></span><span class="art-meta"><i>27</i><b>海梦 × 若菜</b><em>玫粉深靛 · 量尺寸</em></span></a>
+<a class="art-item art-wide" href="works/c07-kaguya-miyuki.html" data-art="c07-kaguya-miyuki"><span class="art-image"><img src="assets/thumbs/c07-kaguya-miyuki-400.webp" srcset="assets/thumbs/c07-kaguya-miyuki-400.webp 400w, assets/thumbs/c07-kaguya-miyuki-800.webp 800w, assets/gallery/c07-kaguya-miyuki.webp 1448w" sizes="(max-width: 800px) 92vw, (max-width: 1304px) 48vw, 610px" alt="辉夜 × 白银，黑金双墨 · 隔桌对峙" width="1448" height="1086" loading="lazy" decoding="async"></span><span class="art-meta"><i>28</i><b>辉夜 × 白银</b><em>黑金双墨 · 隔桌对峙</em></span></a>
+<a class="art-item art-wide" href="works/c08-hori-miyamura.html" data-art="c08-hori-miyamura"><span class="art-image"><img src="assets/thumbs/c08-hori-miyamura-400.webp" srcset="assets/thumbs/c08-hori-miyamura-400.webp 400w, assets/thumbs/c08-hori-miyamura-800.webp 800w, assets/gallery/c08-hori-miyamura.webp 1448w" sizes="(max-width: 800px) 92vw, (max-width: 1304px) 48vw, 610px" alt="堀 × 宫村，暖棕深靛 · 整理耳饰" width="1448" height="1086" loading="lazy" decoding="async"></span><span class="art-meta"><i>29</i><b>堀 × 宫村</b><em>暖棕深靛 · 整理耳饰</em></span></a>
+<a class="art-item" href="works/c09-mai-sakuta.html" data-art="c09-mai-sakuta"><span class="art-image"><img src="assets/thumbs/c09-mai-sakuta-400.webp" srcset="assets/thumbs/c09-mai-sakuta-400.webp 400w, assets/thumbs/c09-mai-sakuta-800.webp 800w, assets/gallery/c09-mai-sakuta.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="麻衣 × 咲太，深靛石墨 · 并肩受风" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>30</i><b>麻衣 × 咲太</b><em>深靛石墨 · 并肩受风</em></span></a>
+<a class="art-item" href="works/c17-emilia-subaru.html" data-art="c17-emilia-subaru"><span class="art-image"><img src="assets/thumbs/c17-emilia-subaru-400.webp" srcset="assets/thumbs/c17-emilia-subaru-400.webp 400w, assets/thumbs/c17-emilia-subaru-800.webp 800w, assets/gallery/c17-emilia-subaru.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="艾米莉亚 × 昴，蓝紫石墨 · 扶肩" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>31</i><b>艾米莉亚 × 昴</b><em>蓝紫石墨 · 扶肩</em></span></a>
+<a class="art-item" href="works/c28-mitsuha-taki.html" data-art="c28-mitsuha-taki"><span class="art-image"><img src="assets/thumbs/c28-mitsuha-taki-400.webp" srcset="assets/thumbs/c28-mitsuha-taki-400.webp 400w, assets/thumbs/c28-mitsuha-taki-800.webp 800w, assets/gallery/c28-mitsuha-taki.webp 1086w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="三叶 × 泷，暖红深靛 · 将触未触" width="1086" height="1448" loading="lazy" decoding="async"></span><span class="art-meta"><i>32</i><b>三叶 × 泷</b><em>暖红深靛 · 将触未触</em></span></a></div>
         </section>
 <section class="gallery-chapter" id="gallery-archive" aria-labelledby="gallery-archive-title">
           <header class="gallery-chapter-head"><span>03 / SERIES ARCHIVE</span><h3 id="gallery-archive-title">系列档案</h3><p>7 张 · 五姐妹、海梦与山田杏奈早期样图</p></header>
-          <div class="gallery-grid"><a class="art-item" href="works/miku.html" data-art="miku"><span class="art-image"><img src="assets/miku.webp" alt="中野三玖，深靛 · 角色海报" width="1050" height="1400" loading="lazy"></span><span class="art-meta"><i>33</i><b>中野三玖</b><em>深靛 · 角色海报</em></span></a>
-<a class="art-item" href="works/nino.html" data-art="nino"><span class="art-image"><img src="assets/nino.webp" alt="中野二乃，蓝紫 · 角色海报" width="1050" height="1400" loading="lazy"></span><span class="art-meta"><i>34</i><b>中野二乃</b><em>蓝紫 · 角色海报</em></span></a>
-<a class="art-item" href="works/itsuki.html" data-art="itsuki"><span class="art-image"><img src="assets/itsuki.webp" alt="中野五月，暖红 · 角色海报" width="1050" height="1400" loading="lazy"></span><span class="art-meta"><i>35</i><b>中野五月</b><em>暖红 · 角色海报</em></span></a>
-<a class="art-item" href="works/yotsuba.html" data-art="yotsuba"><span class="art-image"><img src="assets/yotsuba.webp" alt="中野四叶，墨绿 · 角色海报" width="1050" height="1400" loading="lazy"></span><span class="art-meta"><i>36</i><b>中野四叶</b><em>墨绿 · 角色海报</em></span></a>
-<a class="art-item" href="works/ichika.html" data-art="ichika"><span class="art-image"><img src="assets/ichika.webp" alt="中野一花，黄橙 · 角色海报" width="1050" height="1400" loading="lazy"></span><span class="art-meta"><i>37</i><b>中野一花</b><em>黄橙 · 角色海报</em></span></a>
-<a class="art-item" href="works/marin.html" data-art="marin"><span class="art-image"><img src="assets/marin.webp" alt="喜多川海梦，玫红 · 人物半身" width="1050" height="1400" loading="lazy"></span><span class="art-meta"><i>38</i><b>喜多川海梦</b><em>玫红 · 人物半身</em></span></a>
-<a class="art-item art-wide" href="works/anna.html" data-art="anna"><span class="art-image"><img src="assets/anna.webp" alt="山田杏奈，深靛 · 局部密线" width="1400" height="1050" loading="lazy"></span><span class="art-meta"><i>39</i><b>山田杏奈</b><em>深靛 · 局部密线</em></span></a></div>
+          <div class="gallery-grid"><a class="art-item" href="works/miku.html" data-art="miku"><span class="art-image"><img src="assets/thumbs/miku-400.webp" srcset="assets/thumbs/miku-400.webp 400w, assets/thumbs/miku-800.webp 800w, assets/miku.webp 1050w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="中野三玖，深靛 · 角色海报" width="1050" height="1400" loading="lazy" decoding="async"></span><span class="art-meta"><i>33</i><b>中野三玖</b><em>深靛 · 角色海报</em></span></a>
+<a class="art-item" href="works/nino.html" data-art="nino"><span class="art-image"><img src="assets/thumbs/nino-400.webp" srcset="assets/thumbs/nino-400.webp 400w, assets/thumbs/nino-800.webp 800w, assets/nino.webp 1050w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="中野二乃，蓝紫 · 角色海报" width="1050" height="1400" loading="lazy" decoding="async"></span><span class="art-meta"><i>34</i><b>中野二乃</b><em>蓝紫 · 角色海报</em></span></a>
+<a class="art-item" href="works/itsuki.html" data-art="itsuki"><span class="art-image"><img src="assets/thumbs/itsuki-400.webp" srcset="assets/thumbs/itsuki-400.webp 400w, assets/thumbs/itsuki-800.webp 800w, assets/itsuki.webp 1050w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="中野五月，暖红 · 角色海报" width="1050" height="1400" loading="lazy" decoding="async"></span><span class="art-meta"><i>35</i><b>中野五月</b><em>暖红 · 角色海报</em></span></a>
+<a class="art-item" href="works/yotsuba.html" data-art="yotsuba"><span class="art-image"><img src="assets/thumbs/yotsuba-400.webp" srcset="assets/thumbs/yotsuba-400.webp 400w, assets/thumbs/yotsuba-800.webp 800w, assets/yotsuba.webp 1050w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="中野四叶，墨绿 · 角色海报" width="1050" height="1400" loading="lazy" decoding="async"></span><span class="art-meta"><i>36</i><b>中野四叶</b><em>墨绿 · 角色海报</em></span></a>
+<a class="art-item" href="works/ichika.html" data-art="ichika"><span class="art-image"><img src="assets/thumbs/ichika-400.webp" srcset="assets/thumbs/ichika-400.webp 400w, assets/thumbs/ichika-800.webp 800w, assets/ichika.webp 1050w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="中野一花，黄橙 · 角色海报" width="1050" height="1400" loading="lazy" decoding="async"></span><span class="art-meta"><i>37</i><b>中野一花</b><em>黄橙 · 角色海报</em></span></a>
+<a class="art-item" href="works/marin.html" data-art="marin"><span class="art-image"><img src="assets/thumbs/marin-400.webp" srcset="assets/thumbs/marin-400.webp 400w, assets/thumbs/marin-800.webp 800w, assets/marin.webp 1050w" sizes="(max-width: 800px) 46vw, (max-width: 1304px) 24vw, 295px" alt="喜多川海梦，玫红 · 人物半身" width="1050" height="1400" loading="lazy" decoding="async"></span><span class="art-meta"><i>38</i><b>喜多川海梦</b><em>玫红 · 人物半身</em></span></a>
+<a class="art-item art-wide" href="works/anna.html" data-art="anna"><span class="art-image"><img src="assets/thumbs/anna-400.webp" srcset="assets/thumbs/anna-400.webp 400w, assets/thumbs/anna-800.webp 800w, assets/anna.webp 1400w" sizes="(max-width: 800px) 92vw, (max-width: 1304px) 48vw, 610px" alt="山田杏奈，深靛 · 局部密线" width="1400" height="1050" loading="lazy" decoding="async"></span><span class="art-meta"><i>39</i><b>山田杏奈</b><em>深靛 · 局部密线</em></span></a></div>
         </section>
         <!-- GALLERY_END -->
         </div>
@@ -181,13 +198,15 @@
           <p>不需要记参数表。安装 Skill 后，像委托一位画面导演一样说出你的想法。</p>
         </header>
         <div class="steps">
-          <article><b>01</b><h3>安装 Skill</h3><p>从 GitHub 获取 <code>anime-lineart-director</code>，放入支持 Skills 的工作环境。</p></article>
+          <article><b>01</b><h3>安装 Skill</h3><p>从 GitHub 获取 <code>anime-lineart-director</code>，放进工作环境的 <code>skills</code> 目录（例如 <code>~/.claude/skills/</code>）。</p></article>
           <article><b>02</b><h3>描述人物与事件</h3><p>例如：“画中野三玖扶着耳机，安静地看向镜头，用深靛蓝乱线速写。”</p></article>
           <article><b>03</b><h3>让它导演或直接出图</h3><p>要提示词就说“给我提示词”；环境支持图像生成时，也可以明确说“直接出图”。</p></article>
         </div>
         <div class="repo-row">
-          <p><strong>anime-lineart-director</strong><span>v3.4.2 · by 尘林 Spark</span></p>
-          <button class="repo-button" type="button" data-repo>前往 GitHub 获取 Skill ↗</button>
+          <p><strong>anime-lineart-director</strong><span><!-- VERSION_START -->
+v3.4.2 · by 尘林 Spark
+<!-- VERSION_END --></span></p>
+          <a class="repo-button" href="https://github.com/Spark-chenlin/anime-lineart-director" target="_blank" rel="noopener noreferrer">前往 GitHub 获取 Skill<svg class="icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M6 3h7v7M13 3 4 12"/></svg></a>
         </div>
       </div>
     </section>
@@ -195,22 +214,9 @@
 
   <footer class="site-footer shell">
     <p>动漫手绘线稿导演 · A fixed showcase of selected works.</p>
-    <p>作品与提示词按现有真实记录展示。</p>
+    <p>画廊中的动漫角色用于非官方的风格展示，相关权利归原权利方所有。</p>
   </footer>
 
-  <dialog class="art-dialog" data-art-dialog aria-label="作品详情"></dialog>
-  <dialog class="repo-dialog" data-repo-dialog aria-label="GitHub 项目入口">
-    <button class="dialog-close" type="button" data-close aria-label="关闭">×</button>
-    <div class="repo-dialog-body">
-      <span class="dialog-kicker">GITHUB / OPEN SOURCE</span>
-      <h2>在 GitHub 获取 Skill</h2>
-      <p>查看完整 Skill、视觉规则、使用示例与版本记录。</p>
-      <code>anime-lineart-director</code>
-      <a class="primary-button" href="https://github.com/Spark-chenlin/anime-lineart-director" target="_blank" rel="noopener noreferrer">打开 GitHub ↗</a>
-    </div>
-  </dialog>
-
-  <script src="assets/data.js"></script>
   <script src="assets/app.js"></script>
 </body>
 </html>
