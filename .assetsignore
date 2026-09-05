@@ -10,7 +10,6 @@ content/
 assets/generated/
 assets/fonts/_src/
 assets/fonts/noto-serif-sc/
-assets/fonts/noto-serif-sc.css
 __pycache__/
 *.py
 *.pyc
